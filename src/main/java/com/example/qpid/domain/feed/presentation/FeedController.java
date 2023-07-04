@@ -9,16 +9,15 @@ import com.example.qpid.domain.feed.presentation.dto.response.QueryMyFeedListRes
 import com.example.qpid.domain.feed.presentation.dto.response.QuerySearchFeedListResponse;
 import com.example.qpid.domain.feed.service.CreateFeedService;
 import com.example.qpid.domain.feed.service.DeleteFeedService;
+import com.example.qpid.domain.feed.service.DeleteSearchKeywordService;
 import com.example.qpid.domain.feed.service.QueryAllFeedListService;
 import com.example.qpid.domain.feed.service.QueryFeedDetailsService;
 import com.example.qpid.domain.feed.service.QueryMyFeedListService;
 import com.example.qpid.domain.feed.service.QueryRecentKeywordService;
 import com.example.qpid.domain.feed.service.QuerySearchFeedListService;
 import com.example.qpid.domain.feed.service.UpdateFeedService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -44,6 +43,7 @@ public class FeedController {
     private final QueryFeedDetailsService queryFeedDetailsService;
     private final QuerySearchFeedListService querySearchFeedListService;
     private final QueryRecentKeywordService queryRecentKeywordService;
+    private final DeleteSearchKeywordService deleteSearchKeywordService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -86,5 +86,11 @@ public class FeedController {
     @GetMapping("/recent/keyword")
     public QueryKeywordListResponse queryKeywordList() {
         return queryRecentKeywordService.execute();
+    }
+
+    @GetMapping("/recent/{search-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteKeyword(@PathVariable("search-id") Long searchId) {
+        deleteSearchKeywordService.execute(searchId);
     }
 }
