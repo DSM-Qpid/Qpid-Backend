@@ -1,5 +1,6 @@
 package com.example.qpid.domain.feed.domain;
 
+import com.example.qpid.domain.feed.domain.type.Tag;
 import com.example.qpid.domain.user.domain.User;
 import com.example.qpid.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -30,14 +31,18 @@ public class Feed extends BaseTimeEntity {
     @Column(columnDefinition = "varchar(1000)", nullable = false)
     private String content;
 
+    @Column(columnDefinition = "char(5)", nullable = false)
+    private Tag tag;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Builder
-    public Feed(String title, String content, User user) {
+    public Feed(String title, String content, Tag tag, User user) {
         this.title = title;
         this.content = content;
+        this.tag = tag;
         this.user = user;
     }
 }
