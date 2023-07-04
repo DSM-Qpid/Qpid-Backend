@@ -1,4 +1,4 @@
-package com.example.qpid.domain.feed;
+package com.example.qpid.domain.feed.domain;
 
 import com.example.qpid.domain.user.domain.User;
 import com.example.qpid.global.entity.BaseTimeEntity;
