@@ -1,5 +1,6 @@
 package com.example.qpid.domain.feed.presentation;
 
+import com.example.qpid.domain.feed.domain.type.Tag;
 import com.example.qpid.domain.feed.presentation.dto.request.CreateFeedRequest;
 import com.example.qpid.domain.feed.presentation.dto.request.UpdateFeedRequest;
 import com.example.qpid.domain.feed.presentation.dto.response.QueryAllFeedListResponse;
@@ -7,6 +8,7 @@ import com.example.qpid.domain.feed.presentation.dto.response.QueryFeedDetailsRe
 import com.example.qpid.domain.feed.presentation.dto.response.QueryKeywordListResponse;
 import com.example.qpid.domain.feed.presentation.dto.response.QueryMyFeedListResponse;
 import com.example.qpid.domain.feed.presentation.dto.response.QuerySearchFeedListResponse;
+import com.example.qpid.domain.feed.presentation.dto.response.QueryTagFeedListResponse;
 import com.example.qpid.domain.feed.service.CreateFeedService;
 import com.example.qpid.domain.feed.service.DeleteFeedService;
 import com.example.qpid.domain.feed.service.DeleteSearchKeywordService;
@@ -15,6 +17,7 @@ import com.example.qpid.domain.feed.service.QueryFeedDetailsService;
 import com.example.qpid.domain.feed.service.QueryMyFeedListService;
 import com.example.qpid.domain.feed.service.QueryRecentKeywordService;
 import com.example.qpid.domain.feed.service.QuerySearchFeedListService;
+import com.example.qpid.domain.feed.service.QueryTagFeedListService;
 import com.example.qpid.domain.feed.service.UpdateFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,6 +47,7 @@ public class FeedController {
     private final QuerySearchFeedListService querySearchFeedListService;
     private final QueryRecentKeywordService queryRecentKeywordService;
     private final DeleteSearchKeywordService deleteSearchKeywordService;
+    private final QueryTagFeedListService queryTagFeedListService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -70,7 +74,7 @@ public class FeedController {
 
     @GetMapping("/mine")
     public QueryMyFeedListResponse queryMyFeedList() {
-        return  queryMyFeedListService.execute();
+        return queryMyFeedListService.execute();
     }
 
     @GetMapping("/details/{feed-id}")
@@ -88,9 +92,14 @@ public class FeedController {
         return queryRecentKeywordService.execute();
     }
 
-    @GetMapping("/recent/{search-id}")
+    @DeleteMapping("/recent/{search-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteKeyword(@PathVariable("search-id") Long searchId) {
         deleteSearchKeywordService.execute(searchId);
+    }
+
+    @GetMapping
+    public QueryTagFeedListResponse queryTagFeedList(@RequestParam("tag") Tag tag) {
+        return queryTagFeedListService.execute(tag);
     }
 }
