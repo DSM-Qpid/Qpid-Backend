@@ -5,7 +5,8 @@ import com.example.qpid.global.error.excpetion.QpidException;
 
 public class InvalidTokenException extends QpidException {
 
-    public static QpidException EXCEPTION = new InvalidTokenException();
+    public static QpidException EXCEPTION =
+            new InvalidTokenException();
 
     private InvalidTokenException() {
         super(ErrorCode.INVALID_TOKEN);
