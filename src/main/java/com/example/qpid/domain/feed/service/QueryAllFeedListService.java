@@ -26,7 +26,6 @@ public class QueryAllFeedListService {
                         .map(feed ->FeedElement.builder()
                                 .title(feed.getTitle())
                                 .content(feed.getContent())
-                                .tag(feed.getTag())
                                 .createdAt(feed.getCreatedAt())
                                 .build())
                         .collect(Collectors.toList()))

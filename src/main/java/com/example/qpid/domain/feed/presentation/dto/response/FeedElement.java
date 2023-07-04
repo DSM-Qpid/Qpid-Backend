@@ -11,6 +11,5 @@ import java.time.LocalDateTime;
 public class FeedElement {
     private final String title;
     private final String content;
-    private final Tag tag;
     private final LocalDateTime createdAt;
 }
