@@ -18,7 +18,7 @@ import javax.validation.Valid;
 public class UserController {
     private final SignUpService signUpService;
 
-    @PostMapping
+    @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@RequestBody @Valid SignupRequest request) {
         signUpService.execute(request);
