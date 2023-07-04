@@ -45,4 +45,14 @@ public class Feed extends BaseTimeEntity {
         this.tag = tag;
         this.user = user;
     }
+
+    public Long getUserId() {
+        return user.getId();
+    }
+
+    public void updateFeed(String title, String content, Tag tag) {
+        this.title = title;
+        this.content = content;
+        this.tag = tag;
+    }
 }

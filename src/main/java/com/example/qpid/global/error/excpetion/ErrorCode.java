@@ -9,11 +9,13 @@ import lombok.Getter;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode {
     PASSWORD_MIS_MATCHED(400, "Password MisMatched"),
+    WRITER_MIS_MATCHED(400, "Writer MisMatched"),
 
     INVALID_TOKEN(401, "Invalid Token"),
     EXPIRED_TOKEN(401, "Expired Token"),
 
     USER_NOT_FOUND(404, "User Not Found"),
+    FEED_NOT_FOUND(404, "Feed Not Found"),
 
     USER_ALREADY_EXISTS(409, "User Already Exists"),
 
