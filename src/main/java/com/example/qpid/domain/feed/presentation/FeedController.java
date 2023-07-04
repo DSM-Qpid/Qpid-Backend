@@ -3,10 +3,12 @@ package com.example.qpid.domain.feed.presentation;
 import com.example.qpid.domain.feed.presentation.dto.request.CreateFeedRequest;
 import com.example.qpid.domain.feed.presentation.dto.request.UpdateFeedRequest;
 import com.example.qpid.domain.feed.presentation.dto.response.QueryAllFeedListResponse;
+import com.example.qpid.domain.feed.presentation.dto.response.QueryFeedDetailsResponse;
 import com.example.qpid.domain.feed.presentation.dto.response.QueryMyFeedListResponse;
 import com.example.qpid.domain.feed.service.CreateFeedService;
 import com.example.qpid.domain.feed.service.DeleteFeedService;
 import com.example.qpid.domain.feed.service.QueryAllFeedListService;
+import com.example.qpid.domain.feed.service.QueryFeedDetailsService;
 import com.example.qpid.domain.feed.service.QueryMyFeedListService;
 import com.example.qpid.domain.feed.service.UpdateFeedService;
 import lombok.Getter;
@@ -34,6 +36,7 @@ public class FeedController {
     private final DeleteFeedService deleteFeedService;
     private final QueryAllFeedListService queryAllFeedListService;
     private final QueryMyFeedListService queryMyFeedListService;
+    private final QueryFeedDetailsService queryFeedDetailsService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -61,5 +64,10 @@ public class FeedController {
     @GetMapping("/mine")
     public QueryMyFeedListResponse queryMyFeedList() {
         return  queryMyFeedListService.execute();
+    }
+
+    @GetMapping("/details/{feed-id}")
+    public QueryFeedDetailsResponse queryFeedDetails(@PathVariable("feed-id") Long feedId) {
+        return queryFeedDetailsService.execute(feedId);
     }
 }
