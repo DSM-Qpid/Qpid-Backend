@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface FeedRepository extends JpaRepository<Feed, Long> {
     List<Feed> findAllByUser(User user);
-    List<Feed> findAllByTitleContaining(String keyword);
+    List<Feed> findAllByTitleContains(String keyword);
     List<Feed> findAllByTag(Tag tag);
 }

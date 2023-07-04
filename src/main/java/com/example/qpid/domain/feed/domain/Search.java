@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,13 +28,16 @@ public class Search extends BaseTimeEntity {
     @Column(nullable = false)
     private String keyword;
 
+    private LocalDateTime createdAt;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Builder
-    public Search(String keyword, User user) {
+    public Search(String keyword, LocalDateTime createdAt, User user) {
         this.keyword = keyword;
+        this.createdAt = createdAt;
         this.user = user;
     }
 }
