@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class QpidException extends Throwable {
+public class QpidException extends RuntimeException {
     private final ErrorCode errorCode;
 }
