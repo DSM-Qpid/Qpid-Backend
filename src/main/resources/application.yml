@@ -10,6 +10,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
+    show-sql: true
 
   redis:
     port: ${REDIS_PORT}
@@ -17,6 +18,3 @@ spring:
 
   jackson:
     property-naming-strategy: SNAKE_CASE
-
-  main:
-    allow-bean-definition-overriding: true
