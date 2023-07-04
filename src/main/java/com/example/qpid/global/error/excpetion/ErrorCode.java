@@ -8,7 +8,6 @@ import lombok.Getter;
 @AllArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode {
-    PASSWORD_MIS_MATCHED(400, "Password MisMatched"),
     WRITER_MIS_MATCHED(400, "Writer MisMatched"),
 
     INVALID_TOKEN(401, "Invalid Token"),
