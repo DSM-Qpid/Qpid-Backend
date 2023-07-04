@@ -87,7 +87,7 @@ public class FeedController {
         return querySearchFeedListService.execute(keyword);
     }
 
-    @GetMapping("/recent/keyword")
+    @GetMapping("/recent/search")
     public QueryKeywordListResponse queryKeywordList() {
         return queryRecentKeywordService.execute();
     }
