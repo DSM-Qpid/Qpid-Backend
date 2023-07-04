@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -19,6 +20,6 @@ public class CreateFeedRequest {
     @Size(max = 1000, message = "content는 1000자 이하이어야 합니다")
     private String content;
 
-    @NotBlank
+    @NotNull
     private Tag tag;
 }

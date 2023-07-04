@@ -10,12 +10,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -31,7 +34,10 @@ public class Feed extends BaseTimeEntity {
     @Column(columnDefinition = "varchar(1000)", nullable = false)
     private String content;
 
+    private LocalDateTime createdAt;
+
     @Column(columnDefinition = "char(5)", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Tag tag;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,9 +45,10 @@ public class Feed extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public Feed(String title, String content, Tag tag, User user) {
+    public Feed(String title, String content,LocalDateTime createdAt, Tag tag, User user) {
         this.title = title;
         this.content = content;
+        this.createdAt = createdAt;
         this.tag = tag;
         this.user = user;
     }
