@@ -8,5 +8,4 @@ import lombok.Getter;
 @AllArgsConstructor
 public class QueryUserInfoResponse {
     private final String name;
-
 }

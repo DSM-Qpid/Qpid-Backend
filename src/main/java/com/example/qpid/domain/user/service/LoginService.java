@@ -19,9 +19,10 @@ public class LoginService {
     private final PasswordEncoder passwordEncoder;
 
     public TokenResponse execute(LoginRequest request) {
-        return userRepository.findByAccountId(request.getAccountId())
-                .filter(users -> passwordEncoder.matches(request.getPassword(), users.getPassword()))
-                .map(users -> jwtTokenProvider.generateToken(users.getAccountId()))
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        var userEntity = userRepository.findByAccountId(request.getAccountId()).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        if(!passwordEncoder.matches(request.getPassword(), userEntity.getPassword())) throw UserNotFoundException.EXCEPTION;
+
+        return jwtTokenProvider.generateToken(userEntity.getAccountId());
+
     }
 }
