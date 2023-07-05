@@ -14,6 +14,7 @@ public class QueryKeywordListResponse {
     @Getter
     @Builder
     public static class KeywordDto {
+        private final Long id;
         private final String keyword;
     }
 }

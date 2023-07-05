@@ -26,6 +26,7 @@ public class QueryMyFeedListService {
 
         return new QueryMyFeedListResponse(feedList.stream()
                 .map(feed -> FeedElement.builder()
+                        .id(feed.getId())
                         .title(feed.getTitle())
                         .content(feed.getContent())
                         .createdAt(feed.getCreatedAt())

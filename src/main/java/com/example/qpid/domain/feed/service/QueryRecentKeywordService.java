@@ -25,6 +25,7 @@ public class QueryRecentKeywordService {
 
         return new QueryKeywordListResponse(searchList.stream()
                 .map(search -> QueryKeywordListResponse.KeywordDto.builder()
+                        .id(search.getId())
                         .keyword(search.getKeyword())
                         .build()).collect(Collectors.toList()));
 

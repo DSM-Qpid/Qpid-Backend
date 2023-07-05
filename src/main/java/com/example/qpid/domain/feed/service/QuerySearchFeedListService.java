@@ -42,6 +42,7 @@ public class QuerySearchFeedListService {
 
         return new QuerySearchFeedListResponse(feedList.stream()
                 .map(feed -> FeedElement.builder()
+                        .id(feed.getId())
                         .title(feed.getTitle())
                         .content(feed.getContent())
                         .createdAt(feed.getCreatedAt())
