@@ -1,5 +1,6 @@
 package com.example.qpid.domain.user.presentation.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 public class SignupRequest {
     @NotBlank(message = "accountId은 Null 또는 공백 또는 띄어쓰기를 허용하지 않습니다.")
     @Size(min = 8, message = "accountId는 8자 이상이어야 합니다")
+    @JsonProperty("account_id")
     private String accountId;
 
     @NotBlank(message = "password는 Null 또는 공백 또는 띄어쓰기를 허용하지 않습니다.")

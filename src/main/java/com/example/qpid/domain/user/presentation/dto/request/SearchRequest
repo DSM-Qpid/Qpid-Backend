@@ -1,0 +1,9 @@
+package com.example.qpid.domain.user.presentation.dto.request;
+
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class SearchRequest {
+
+    private Long Id;
+
+}
